@@ -79,6 +79,7 @@ cd goodreads-azure-lakehouse-dsai3202
 
 # Run full pipeline
 python main.py
+```
 ---
 
 ## Requirements
