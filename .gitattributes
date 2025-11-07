@@ -1,1 +1,37 @@
 * text=auto eol=lf
+# .gitattributes
+# Normalize line endings and ensure consistent handling across environments
+
+# Text files (auto normalize to LF)
+* text=auto eol=lf
+
+# Jupyter notebooks
+*.ipynb linguist-language=Python
+
+# Python source files
+*.py text diff=python
+
+# JSON, YAML, and configuration
+*.json text
+*.yml text
+*.yaml text
+
+# Markdown and documentation
+*.md text diff=markdown
+
+# Data files
+*.csv text
+*.parquet binary
+*.delta binary
+
+# Notebooks and archives
+*.zip binary
+*.gz binary
+*.tar binary
+
+# Preserve CRLF for Windows CMD scripts
+*.bat eol=crlf
+
+# Ignore GitHub language stats noise from data folders
+data/* linguist-vendored
+notebook/* linguist-vendored
