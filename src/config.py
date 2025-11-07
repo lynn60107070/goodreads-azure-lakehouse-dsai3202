@@ -1,46 +1,37 @@
 """
-config.py
-Central configuration file for Goodreads Azure Lakehouse (DSAI 3202 Lab 3)
+Central configuration for Goodreads Azure Lakehouse (DSAI 3202 Lab 3)
 
-Stores environment-level constants such as Azure storage paths,
-account names, and default dataset locations for Bronze, Silver, and Gold layers.
-This module ensures consistent path references across all scripts.
+All environment-specific values must come from environment variables or secrets.
+Never hard-code storage accounts or keys in source control.
 """
 
 import os
 
 # ---------------------------------------------------------------------
-# Azure Storage Configuration
+# Azure Storage (parametric)
 # ---------------------------------------------------------------------
+STORAGE_ACCOUNT = os.getenv("AZURE_STORAGE_ACCOUNT", "<yourstorageaccount>")
+CONTAINER = os.getenv("AZURE_STORAGE_CONTAINER", "lakehouse")
 
-STORAGE_ACCOUNT = "goodreadsreviews60107070"
-CONTAINER = "lakehouse"
 BASE_PATH = f"abfss://{CONTAINER}@{STORAGE_ACCOUNT}.dfs.core.windows.net"
 
 # ---------------------------------------------------------------------
-# Lakehouse Layer Paths
+# Lakehouse Layers
 # ---------------------------------------------------------------------
-
-BRONZE_PATH = os.path.join(BASE_PATH, "raw/")            # raw ingestion layer
-SILVER_PATH = os.path.join(BASE_PATH, "processed/")      # cleaned parquet layer
-GOLD_PATH   = os.path.join(BASE_PATH, "gold/")           # curated + features layer
-
-# ---------------------------------------------------------------------
-# Dataset-Specific Paths
-# ---------------------------------------------------------------------
-
-BOOKS_PATH    = os.path.join(SILVER_PATH, "books/")
-AUTHORS_PATH  = os.path.join(SILVER_PATH, "authors/")
-REVIEWS_PATH  = os.path.join(SILVER_PATH, "reviews/")
-CURATED_PATH  = os.path.join(GOLD_PATH, "curated_reviews/")
-FEATURES_PATH = os.path.join(GOLD_PATH, "features_v1/")
+BRONZE_PATH = f"{BASE_PATH}/raw/"
+SILVER_PATH = f"{BASE_PATH}/processed/"
+GOLD_PATH   = f"{BASE_PATH}/gold/"
 
 # ---------------------------------------------------------------------
-# Utility
+# Dataset Paths
 # ---------------------------------------------------------------------
+BOOKS_PATH    = f"{SILVER_PATH}books/"
+AUTHORS_PATH  = f"{SILVER_PATH}authors/"
+REVIEWS_PATH  = f"{SILVER_PATH}reviews/"
+CURATED_PATH  = f"{GOLD_PATH}curated_reviews/"
+FEATURES_PATH = f"{GOLD_PATH}features_v1/"
 
 def print_config():
-    """Print all key storage paths (for quick verification)."""
     print("Azure Lakehouse Configuration")
     print(f"Storage Account: {STORAGE_ACCOUNT}")
     print(f"Container:       {CONTAINER}")

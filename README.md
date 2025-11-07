@@ -38,7 +38,7 @@ goodreads-azure-lakehouse-dsai3202/
 │ └─ lab3_fabric_hw2.ipynb # Databricks verification of Fabric results
 │
 ├─ src/ # Core modular Python source code
-│ ├─ init.py # Marks directory as a package
+│ ├─ __init__.py # Marks directory as a package
 │ ├─ clean_reviews.py # Functions for cleaning, trimming, deduplication
 │ ├─ config.py # Central configuration (paths, storage URIs)
 │ ├─ curate_gold.py # Joins datasets into curated Gold Delta tables
@@ -65,8 +65,8 @@ goodreads-azure-lakehouse-dsai3202/
 ---
 
 ## Homework Integration
-- **Homework 1 (Databricks)** → Cleaning and curation steps → stored under `notebook/homework1_databricks/`
-- **Homework 2 (Fabric)** → Aggregations and enrichment → stored under `notebook/homework2_fabric/`
+- **Homework 1 (Databricks)** → Cleaning and curation steps → stored under `notebook/homework1/`
+- **Homework 2 (Fabric)** → Aggregations and enrichment → stored under `notebook/homework2/`
 
 ---
 
@@ -84,6 +84,13 @@ python main.py
 - **PySpark:** ≥ 3.4  
 - **Delta Lake:** ≥ 2.4  
 - **Access:** Azure Data Lake Storage Gen2  
+
+---
+
+## Documentation Access
+- Detailed Fabric workflow → [doc/fabric_steps.md](doc/fabric_steps.md)
+- Formal lab report → [doc/lab_report.md](doc/lab_report.md)
+- SQL & M code snippets → [doc/sql_and_m_snippets.md](doc/sql_and_m_snippets.md)
 
 ---
 

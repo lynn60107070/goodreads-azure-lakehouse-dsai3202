@@ -62,11 +62,13 @@ Used **Group By** to compute:
 
 ---
 
-## 5. Publication
-- Selected **Next → Publish**  
-- Destination → *Warehouse / Datamart (Preview)*  
-- Published table name: `curated_reviews`  
-- Verified refresh and previewed final table  
+## 5. Publication and Persistence
+- Clicked **Publish All** to save the Dataflow Gen2 objects.
+- Then selected **Next → Publish** to Warehouse / Datamart (Preview).
+- Published table name: `curated_reviews` (row count verified equal to Databricks output ± tolerance).
+- Optional feature export (`features_v1`) saved to:
+  abfss://lakehouse@<yourstorageaccount>.dfs.core.windows.net/gold/features_v1/
+
 
 ---
 
@@ -74,17 +76,6 @@ Used **Group By** to compute:
 - Confirmed schema alignment with Databricks curated reviews  
 - Verified data types, null handling, and numeric ranges  
 - Ensured derived features persisted correctly in Warehouse  
-
----
-
-## 7. Repository Artifacts
-
-| Stage | File / Notebook | Description |
-|:------|:----------------|:-------------|
-| Fabric Dataflow | `notebook/homework2_fabric/dataflow_gen2_export.json` | JSON export of Dataflow Gen2 |
-| Power Query M | `notebook/homework2_fabric/power_query_M.m` | Transformation script |
-| Documentation | `doc/fabric_steps.md` | Narrative summary (this file) |
-| Evidence | `notebook/homework2_fabric/evidence/` | Screenshots of Fabric UI and published table |
 
 ---
 

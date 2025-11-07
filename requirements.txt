@@ -1,10 +1,7 @@
-# requirements.txt
-# Python dependencies for Goodreads Azure Lakehouse (DSAI 3202 Lab 3)
+# requirements.txt — minimal, Spark/Delta-compatible
 pyspark==3.5.1
 delta-spark==3.2.0
 pandas==2.2.2
-numpy==1.26.0
 pyarrow==13.0.0
-azure-storage-blob==12.19.0
+azure-storage-file-datalake==12.14.2
 azure-identity==1.14.1
-json5==0.9.14

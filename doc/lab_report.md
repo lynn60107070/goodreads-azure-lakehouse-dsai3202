@@ -1,10 +1,10 @@
 # DSAI 3202 Lab 3: Data Preprocessing on Azure
 
 ## Author
-Name: [Your Full Name]  
-Student ID: [Your UDST ID]  
+Name: Lynn Younes 
+Student ID: 60107070
 Course: DSAI 3202 Cloud Computing  
-Instructor: [Instructor’s Name]  
+Instructor: Dr.Oussama Djedidi
 Lab Title: Data Preprocessing on Azure (Goodreads Lakehouse)  
 Repository: goodreads-azure-lakehouse-dsai3202
 
@@ -33,19 +33,22 @@ The lab demonstrates structured data curation, cleaning, feature creation, and f
 ## 3. Methodology
 
 ### 3.1 Bronze Layer (Raw Zone)
-- Contains raw Goodreads reviews ingested directly from the source.  
-- Includes nulls, duplicates, and inconsistent types.  
-- Only structure and documentation are committed in Git under `data/bronze/README.md`.
+- Contains raw Goodreads **books**, **reviews**, and **authors** JSON files ingested from UCSD public URLs.  
+- Ingested using `wget → gzip -d → azcopy copy` into ADLS Gen2 under `/lakehouse/raw/{books|reviews|authors}/`.  
+- Includes malformed records, nulls, and duplicates by design.  
+- Only folder structure and README are versioned in Git for lineage.
+
 
 ### 3.2 Silver Layer (Cleaned Zone)
-- Cleaning performed using PySpark in Databricks.  
-- Operations:
-  - Remove rows missing review_id, book_id, or user_id  
-  - Cast rating to integer and keep values between 1 and 5  
-  - Trim and filter out review_text shorter than 10 characters  
-  - Drop duplicates based on review_id  
-  - Save cleaned data back to ADLS Silver path  
-- Implemented in `src/clean_reviews.py`.
+- Books and authors converted from JSON → Parquet using **Azure Data Factory** (ADF) pipelines, published under `/processed/{books|authors}/`.  
+- Reviews cleaned in **Databricks** using Spark (PERMISSIVE mode) and saved back to `/processed/reviews/`.  
+- Cleaning operations included:
+  - Drop rows missing `review_id`, `book_id`, `user_id`  
+  - Cast `rating` to integer in [1–5]  
+  - Trim and filter `review_text` <10 characters  
+  - Drop duplicates on `review_id`  
+  - Save final DataFrame as Parquet under the Silver layer  
+- Implemented in `src/clean_reviews.py` and validated in Databricks Homework Part I.
 
 ### 3.3 Gold Layer (Curated and Feature-Enriched Zone)
 - Joined reviews, books, and authors in Databricks during Homework Part I.  
