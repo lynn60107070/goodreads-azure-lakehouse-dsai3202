@@ -1,0 +1,24 @@
+# Data and outputs
+data/
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+*.parquet
+*.delta
+_delta_log/
+ECHO is on.
+# Notebooks cache
+.ipynb_checkpoints/
+ECHO is on.
+# Envs and OS cruft
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+ECHO is on.
+# IDE
+.idea/
+.vscode/
