@@ -1,6 +1,6 @@
 # This is the most README README of all READMEs
 
-Welcome to **Lab 4: Text Feature Engineering on Azure**, aka that one lab that aged us all 7 years in 3 days. If you’ve ever waited 2x0 hours for a Spark job and questioned all your life choices… same.
+Welcome to **Lab 4: Text Feature Engineering on Azure**, aka that one lab that aged us all 7 years in 3 days. If you’ve ever waited 20 hours for a Spark job and questioned all your life choices… same.
 
 ![valid crashout](images/me_rn.gif)
 
